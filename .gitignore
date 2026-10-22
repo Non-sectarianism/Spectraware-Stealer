@@ -1,0 +1,8 @@
+config.json
+config.local*.json
+data/
+builds/*
+!builds/.gitkeep
+*.exe
+*.zip
+node_modules/
